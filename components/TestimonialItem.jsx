@@ -1,0 +1,33 @@
+import PropTypes from 'prop-types';
+import clsx from "clsx";
+
+const TestimonialItem = ({ item, containerClassName }) => {
+  return (
+    <div
+      className={clsx(
+        "relative px-14 pb-14 pt-11 after:absolute after:bottom-0 after:right-0 after:h-0.5 after:w-screen after:bg-s2 after:content-[''] max-md:px-0 max-md:pt-11 after:max-md:-right-4",
+        containerClassName,
+      )}
+    >
+      <blockquote className="h6 mb-8 text-p4">{item.comment}</blockquote>
+
+      <div className="flex items-center max-xl:-mr-8">
+        <div>
+          <h4 className="body-2 mb-0.5 text-black">{item.name}</h4>
+          <p className="small-compact uppercase text-black">{item.role}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+TestimonialItem.propTypes = {
+  item: PropTypes.shape({
+    comment: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
+    role: PropTypes.string.isRequired,
+  }).isRequired,
+  containerClassName: PropTypes.string,
+};
+
+export default TestimonialItem;
